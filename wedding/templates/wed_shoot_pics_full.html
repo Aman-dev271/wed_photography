@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+{% block content %}
+<br>
+<br>
+<center>
+
+<div class="card ">
+
+  <img src="/media/{{wed_shoot_pics.images}}"  class="card-img-top" alt="..."  style="width:80%;">
+  <div class="card-body">
+    <h5 class="card-title">{{wed_shoot_pics.name}}</h5>
+    <p class="card-text">{{wed_shoot_pics.desc}}</p>
+  </div>
+</div>
+<a href="/wed_shoot_view/">
+<button type="button" class="btn btn-success" name="button">GO GALLARY</button></a>
+</center>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+{% endblock %}

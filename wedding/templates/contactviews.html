@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+{% block content %}
+<br>
+<br>
+
+
+<CENTER>
+<h3 class="bg-primary col-md-11">QUESTION ANSWERS</h3>
+
+ </CENTER>
+
+    <div class="col-cd-12">
+      <div class="col-md-12">
+      <table class="table col-md-12" >
+
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col1">Questions</th>
+            <th  scope="col1" colspan="4">ANSWERS</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for r in contact %}
+          <tr>
+            <th class="bg-light text-dark">{{r.pk}}</th>
+            <td class="bg-light text-dark">{{r.name}}</td>
+            <td class="bg-light text-dark">{{r.email}}</td>
+            <td class="bg-light text-dark">{{r.phone}}</td>
+            <td class="bg-light text-dark">{{r.Question}}</td>
+            <th class="bg-warning text-dark">{{r.Answer}}</th>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+</div>
+    </div>
+
+
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+ {% endblock %}

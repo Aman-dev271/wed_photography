@@ -1,0 +1,48 @@
+<div class="card text-center bg-light">
+  <div class="card-header">
+    <b>Powerd By:</b>WWW.riaphotography.com
+  </div>
+  <center>
+  <div class="form-row ">
+    {% for i in footr %}
+  <div class="col-md-1" style="margin-left:500px;margin-top:10px;">
+      <img src='{{ i.pic.url }}' class="card-title" style="width:50px;height:50px;border-radius:50%;">
+      <p class="card-text">{{i.desc}}</p>
+      <a href="{{ i.link }}"  style="margin:10px;"class="{{ i.color_class }}">{{ i.name }}</a>
+    </div>
+    {% endfor %}
+
+
+    <div class="col-md-1" style="margin:10px;">
+      <img src='{% static "images/slide/1st.jpg"%}' class="card-title" style="width:50px;height:50px;border-radius:50%;">
+        <p class="card-text">Like our page On InstaGram </p>
+        <a href="#"  style="margin:10px;"class="btn btn-danger">Instagram</a>
+      </div>
+
+
+
+  </div>
+  <center>
+  <div class="card-footer text-muted">
+    Copyright@www.riaphotography.com
+  </div>
+</div>
+
+
+
+
+
+
+<div class="carousel-item active">
+  <img src="/media/{{about.1.image}}" width="380px" height="450px" style="border-radius:10%;padding:20px;">
+  <div class="carousel-caption d-none d-md-block ">
+    <h4 class="text-dark">{{about.1.name}}</h4>
+    <h4 class="text-dark">{{about.1.emailem}}</h4>
+    <h5 class="text-dark">{{about.1.phone}}</h5>
+    <h5 class="text-dark">{{about.1.role}}</h5>
+    <h5 class="text-dark">{{about.1.work_experiance|slice:"1:46"}}</h5>
+    <a href="/pre_wedding/employee_detail_view/{{about.1.id}}">
+    <button class="btn btn-success" id="{{about.1.id}}">For more</button>
+    </a>
+  </div>
+</div>

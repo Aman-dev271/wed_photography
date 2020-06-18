@@ -1,0 +1,24 @@
+{% extends 'layout.html'%}
+
+{% block content%}
+<br>
+{% for i in pre_wed_main_slider %}
+<div class="card bg-dark text-white">
+  <a href="/main_slider_pic_detail_views/{{i.id}}">
+    <img src="{{i.image.url}}" class="card-img" alt="..." style="height:800px;">
+
+  </a>
+  <div class="card-img-overlay">
+
+    <h5 class="card-title">{{i.heading}}</h5>
+    <p class="card-text">{{i.caption2}}</p>
+
+  </div>
+
+</div>
+<br>
+{% endfor %}
+<br>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'layout.html'%}
+{% block content %}
+<br>
+<br>
+<center>
+
+<div class="card mb-3 ">
+
+  <img src="/media/{{pre_wed_shoot_pics_full.photo}}"  class="card-img-top" alt="..."  style="width:80%;">
+  <div class="card-body">
+    <h5 class="card-title">{{pre_wed_shoot_pics_full.name}}</h5>
+    <p class="card-text">{{pre_wed_shoot_pics_full.desc}}</p>
+  </div>
+</div>
+
+</center>
+<center>
+<a href="/pre_wedding/pre_wed/">
+<button type="button" name="button" class='btn btn-success'>GO HOME</button></a>
+<a href="/pre_wedding/pre_wed_shoot_view/">
+<button type="button" name="button" class='btn btn-success'>GO GALLARY</button></a>
+</center>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+{% endblock %}

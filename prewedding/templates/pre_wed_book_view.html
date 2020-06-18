@@ -1,0 +1,75 @@
+
+<style>
+
+    div.scrollmenu {
+    background-color:light;
+    overflow: auto;
+    white-space: nowrap;
+  }
+
+  div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }
+
+  div.scrollmenu a:hover {
+    background-color: blue;
+  }
+
+</style>
+
+{% extends 'layout.html'%}
+{% block content %}
+
+<!-- <div class=" bg-light col-md-11 col-lg-11 col-sm-11 col-xs-11" style="padding:10px;"> -->
+
+
+  <h1 class='bg-primary'  style="text-align:center;">Our Bookings</h1>
+  <div class="scrollmenu">
+ <table class="table table-light">
+     <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+
+        <th scope="col">city</th>
+        <th scope="col">state</th>
+        <th scope="col">zipcode</th>
+        <th scope='col'>MakeUp Artist</th>
+        <th scope='col'> DATES</th>
+
+      </tr>
+    </thead>
+    {% for tab in pre_wed_booking %}
+    <tbody>
+      <tr>
+        <th scope="row">{{tab.id}}</th>
+        <td>{{tab.name}}</td>
+        <td>{{tab.email}}</td>
+        <td>{{tab.telephone}}</td>
+        <td>{{tab.address1}}</td>
+        <td>{{tab.city}}</td>
+        <td>{{tab.state}}</td>
+        <td>{{tab.zipcode}}</td>
+        <td>{{tab.make}}--<b>And</b>--<b>Gender</b>-->{{tab.makeup}}</td>
+
+        <td><b>From</b>--{{tab.date11}}--<b>To</b>--{{tab.date21}}</td>
+      </tr>
+
+
+    </tbody>
+    {% endfor %}
+  </table>
+
+
+</div>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+{% endblock%}

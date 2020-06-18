@@ -1,0 +1,92 @@
+
+{% extends 'base.html'%}
+{% block content %}
+<div>
+<div class="container my-3">
+  <center>
+    <h3 class="bg-primary"style="border-radius:20px;">Help Center</h3>
+    </center>
+    <form action="/contact/" method="POST">
+      {% csrf_token %}
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name='name' placeholder="Enter Your Name"  required>
+  </div>
+  <div class="form-group">
+    <label for="name">Email</label>
+    <input type="email" class="form-control" id="email" name='email' placeholder="Enter Your Email" required>
+  </div>
+
+    <div class="form-group">
+    <label for="name">Phone</label>
+    <input type="tel" class="form-control" id="phone" name='phone' placeholder="Enter Your Phone Number" required>
+  </div>
+
+
+   <div class="form-group">
+    <label for="Question">How May We Help You?</label>
+    <textarea class="form-control" id="Question" name='Question' rows="3" placeholder="Tell me Your Questions"></textarea>
+  </div>
+  <center>
+        <button type="submit" class="btn btn-success">Submit</button>
+        </center>
+</form>
+
+<br>
+
+
+</div><CENTER><div class="col-md-6">
+<hr><h3 class="bg-primary">QUESTION ANSWERS</h3>
+
+</div> </CENTER>
+
+
+<div class="container">
+    <div class="col-cd-12">
+
+
+
+
+      <div class=" bg-light col-md-11" style="padding:10px;">
+      <table class="table col-md-12 bg-light" >
+
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col1">Questions</th>
+            <th scope = 'col1'>ANSWERS</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for r in contacts|slice:"0:4" %}
+          <tr>
+
+            <th class="bg-light text-dark">{{r.pk}}</th>
+
+            <td class="bg-light text-dark">{{r.name}}</td>
+            <td class="bg-light text-dark">{{r.email}}</td>
+            <td class="bg-light text-dark">{{r.phone}}</td>
+            <td class="bg-light text-dark">{{r.Question}}</td>
+            <th class="bg-warning text-light">{{r.Answer}}</th>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+      </div>
+      <center>
+      <a href="/question/">
+<button type="button" name="button" class="btn btn-success">View More</button>
+      </a>
+      </center>
+
+</div>
+    </div>
+    </div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    {% endblock %}

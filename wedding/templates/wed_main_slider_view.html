@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<br>
+<h1 class="col-md-11 bg-primary">About Photo</h1>
+<div class="container my-4">
+    <div class="row">
+    <div class="col-md-4">
+    <div class="row">
+        <a href="/#pics">
+        <img src="/media/{{wed_main_slider_view.image}}" width="233px" height="385px" style="border-radius:50px">
+        </a>
+    </div>
+
+        <!--<div class="row">-->
+
+            <!--<button class="btn btn-primary mx-3">Buy Now</button>-->
+            <!--<button class="btn btn-primary">Add To Cart</button>-->
+
+
+        <!--</div>-->
+
+
+    </div>
+
+    <div class="col-md-8">
+        <h5 class="text-dark">{{wed_main_slider_view.heading}}</h5>
+        <p class="text-dark">{{wed_main_slider_view.caption2}}</p>
+        <p class="text-dark">{{wed_main_slider_view.desc}}</p>
+
+
+    </div>
+    </div>
+
+
+</div>
+<hr>
+<h1 class="col-md-11 bg-primary">About Camra</h1>
+<div class="container my-4">
+    <div class="row">
+    <div class="col-md-4">
+    <div class="row">
+        <a href="/#wed_shoot">
+        <img src="/media/{{wed_main_slider_view.Camra}}" width="233px" height="385px"style="border-radius:50px;">
+        </a>
+    </div>
+
+        <!--<div class="row">-->
+
+            <!--<button class="btn btn-primary mx-3">Buy Now</button>-->
+            <!--<button class="btn btn-primary">Add To Cart</button>-->
+
+
+        <!--</div>-->
+
+
+    </div>
+
+    <div class="col-md-8">
+        <h5 class="text-dark">{{wed_main_slider_view.name_of_camra}}</h5>
+        <p class="text-dark">{{wed_main_slider_view.camra_details}}</p>
+
+
+    </div>
+    </div>
+
+
+</div>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+{% endblock %}

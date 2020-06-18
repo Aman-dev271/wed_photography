@@ -1,0 +1,28 @@
+
+{% extends 'base.html'%}
+
+{% block content %}
+<h1 class="bg-primary" style="text-align:center">Wedding Shoot</h1>
+<center>
+<div class=" form-row col-sm-12 col-md-12 " style=" display:flex;
+justify-content: center;
+            align-items: center;">
+{% for i in wed_shoot_pics%}
+
+<div class="form-row col-md-3 col-sm-12" >
+
+
+<a href="/wed_shoot_view_full_view/{{i.id}}">
+  <div style="height:400px; width:350px;  background-image: url('/media/{{i.images}}');  background-size: 100% ; background-repeat:no-repeat;padding:1px" >
+</a>
+
+    <a href="/Wedding_photo_shoot_view/{{i.id}}"><button id="{{i.id}}" class="btn btn-success">View Detail</button></a>
+
+  <a href="/wed_shoot_view_full_view/{{i.id}}"><button id="{{i.id}}" class="btn btn-success">View full size</button></a>
+
+</div>
+</div>
+{% endfor %}
+</center>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+{% endblock %}

@@ -1,0 +1,186 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>{{title}}</title>
+    <style media="screen">
+    #myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #bd0d33;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
+    </style>
+  </head>
+  <body >
+    <nav  id='nav' class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+<a href="/">
+  <img src="{% static 'images/logo/mani.png'%}" width="100px" height="100px" style="border-radius:100%;"></a>
+</a>
+<br>
+  <a class="navbar-brand" href="/">Wedding</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="/pre_wedding/pre_wed/">Pre Wedding<span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Reviews
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/reviews/">On Wedding</a>
+                <a class="dropdown-item" href="/pre_wedding/pre_reviews/">On Pre-Wedding</a>
+
+              </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Photos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/wed_shoot_view/">Wedding</a>
+                      <a class="dropdown-item" href="/pre_wedding/pre_wed_shoot_view/">Pre-Wedding</a>
+
+                    </div>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/pre_wedding/about_us_fun/">About Us<span class="sr-only">(current)</span></a>
+                  </li>
+
+
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/contact/">Contact Us<span class="sr-only">(current)</span></a>
+                  </li>
+
+
+
+    </ul>
+    <!-- <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> -->
+  </div>
+</nav>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <br>
+    <br>
+    <!-- footer -->
+    <!-- footer -->
+    <center>
+    <div class="card text-center bg-light col-md-12 col-sm-12">
+      <div class="card-header">
+        <b>Powerd By:</b>WWW.Mani'sphotography.com
+      </div>
+
+      <div class="form-row  col-md-12">
+        <div class="col-md-3" >
+          <a href="https://www.facebook.com/">
+          <img src='{% static "images/camra/facebook1.jpg"%}' class="card-title" style="width:50px;height:50px;border-radius:50%;">
+</a>
+            <p class="card-text">Like our page On Facebook </p>
+            <a href="https://www.facebook.com/"  class="btn btn-primary">FACEBOOK</a>
+          </div>
+        <div class="col-md-3" style="margin:10px;">
+          <a href="https://www.instagram.com/?hl=en"  >
+          <img src='{% static "images/camra/Instagram.jpeg"%}' class="card-title" style="width:50px;height:50px;border-radius:50%;">
+</a>
+            <p class="card-text">Like our page On InstaGram </p>
+            <a href="https://www.instagram.com/?hl=en"  style="margin:10px;"class="btn btn-danger">Instagram</a>
+          </div>
+
+
+          <div class="col-md-3" style="margin:10px;">
+            <a href="https://twitter.com/explore">
+            <img src='{% static "images/camra/teiter.jpg"%}' class="card-title" style="width:50px;height:50px;border-radius:50%;">
+</a>
+              <p class="card-text">Like our page On Twiter </p>
+              <a href="https://twitter.com/explore"  style="margin:10px;"class="btn btn-primary">Twiter</a>
+            </div>
+            <div class="col-md-2" style="margin:10px;">
+                <a href="https://github.com/" >
+              <img src='{% static "images/camra/github.jpg"%}' class="card-title" style="width:50px;height:50px;border-radius:50%;">
+</a>
+                <p class="card-text">Like our page On Github </p>
+                <a href="https://github.com/"  style="margin:10px;"class="btn btn-secondary">Github</a>
+              </div>
+
+
+
+      </div>
+
+      <div class="card-footer text-muted">
+        Copyright@www.Mani'sphotography.com
+      </div>
+    </div>
+  </center>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    {% block js %}
+    <script>
+    //Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+mybutton.style.display = "block";
+} else {
+mybutton.style.display = "none";
+}
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+document.body.scrollTop = 0;
+document.documentElement.scrollTop = 0;
+}
+</script>
+    {% endblock %}
+
+  </body>
+</html>

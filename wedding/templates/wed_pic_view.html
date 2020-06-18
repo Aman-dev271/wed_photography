@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<br>
+<h1 class="col-md-12 bg-primary" style="text-align:center">About Photo</h1>
+<div class="container my-6">
+    <div class="row">
+    <div class="col-md-6">
+    <div class="row" style=' justify-content: center;align-items: center;'>
+        <a href="/#wed_shoot">
+
+        <img src="/media/{{wed_pic_view.images}}" width="333px" height="485px" style="border-radius:50px; ">
+        </a>
+    </div>
+
+        <!--<div class="row">-->
+
+            <!--<button class="btn btn-primary mx-3">Buy Now</button>-->
+            <!--<button class="btn btn-primary">Add To Cart</button>-->
+
+
+        <!--</div>-->
+
+
+    </div>
+
+    <div class="col-md-6" style=' justify-content: center;align-items: center;'>
+        <h5 class="text-dark">{{wed_pic_view.name}}</h5>
+        <p class="text-dark">{{wed_pic_view.desc}}</p>
+
+
+    </div>
+    </div>
+
+
+</div>
+<hr>
+<h1 class="col-md-12 bg-primary" style="text-align:center">About Camra</h1>
+<div class="container my-6">
+    <div class="row">
+    <div class="col-md-6">
+    <div class="row" style=' justify-content: center;align-items: center;'>
+        <a href="/#wed_shoot">
+        <img src="/media/{{wed_pic_view.camra}}" width="333px" height="485px"style="border-radius:50px;">
+        </a>
+    </div>
+
+        <!--<div class="row">-->
+
+            <!--<button class="btn btn-primary mx-3">Buy Now</button>-->
+            <!--<button class="btn btn-primary">Add To Cart</button>-->
+
+
+        <!--</div>-->
+
+
+    </div>
+
+    <div class="col-md-6" style=' justify-content: center;align-items: center;'>
+        <h5 class="text-dark">{{wed_pic_view.nameof_camra}}</h5>
+        <p class="text-dark">{{wed_pic_view.detail_of_camra}}</p>
+
+
+    </div>
+    </div>
+
+
+</div>
+<center>
+<a href="/wed_shoot_view/">
+  <button type="button" class="btn btn-success" name="button">GO TO GALLARY</button>
+
+</a>
+<a href="/#wed_shoot">
+  <button type="button" class="btn btn-success" name="button">GO TO HOME</button>
+
+</a>
+</center>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+{% endblock %}

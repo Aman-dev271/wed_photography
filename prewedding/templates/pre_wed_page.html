@@ -1,0 +1,594 @@
+
+<style>
+
+    div.scrollmenu {
+    background-color:light;
+    overflow: auto;
+    white-space: nowrap;
+  }
+
+  div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }
+
+  div.scrollmenu a:hover {
+    background-color: blue;
+  }
+
+    #myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #bd0d33;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+  }
+
+  #myBtn:hover {
+  background-color: #555;
+  }
+    .col-md-3
+  {
+  display: inline-block;
+  margin-left:-5px;
+  }
+  .carousel-indicators .active {
+  background-color: blue;
+    }
+  .col-md-3 img{
+  width:100%;
+  height:auto;
+  }
+  body .carousel-indicator li{
+  background-color: blue;
+  }
+  body .carousel-indicators{
+  bottom: 0;
+  }
+  body .carousel-control-prev-icon,
+  body .carousel-control-next-icon{
+  background-color: blue;
+  }
+   body .no-padding{
+   padding-left: 0,
+   padding-right: 0;
+   }
+
+</style>
+{% extends 'layout.html' %}
+
+{% load static %}
+
+
+<!-- {% block title %}{{title}}{% endblock %} -->
+ {% block content %}
+ <center>
+   <div id="demo{{forloop.counter}}" class="carousel slide" data-ride="carousel" style="width:99%" >
+     <ol class="carousel-indicators">
+       <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+
+       {% for i  in slider_range %}
+       <li data-target="#demo{{forloop.counter}}" data-slide-to="{{i}}" ></li>
+       {% endfor %}
+     </ol>
+     <div class="carousel-inner" >
+       <div class="carousel-item active">
+
+         <img src="/media/{{pre_wed_slider.0.image}}" class="d-block w-100" alt="..." style='height: 600px;'>
+         <div class="carousel-caption " style="margin-top: 2px;">
+           <h5>{{pre_wed_slider.0.heading}}</h5>
+           <p>{{pre_wed_slider.0.caption2}}</p>
+           <a href="/pre_wedding/pre_wed_main_slide_show/">
+           <button type="button" class="btn btn-success" name="button">View pics</button>
+           </a>
+           <a href="/pre_wedding/pre_wed_main_slider_detail_view/{{pre_wed_slider.0.id}}">
+           <button type="button" class="btn btn-success" id={{pre_wed_slider.0.id}} name="button">View Details</button>
+           </a>
+
+         </div>
+       </div>
+
+       {% for i in pre_wed_slider|slice:"1:"%}
+       <div class="carousel-item">
+         <img src="/media/{{i.image}}" class="d-block w-100" alt="..." style='height: 600px;'>
+         <div class="carousel-caption">
+           <h5>{{i.heading}}</h5>
+           <p>{{i.caption2}}</p>
+           <a href="/pre_wedding/pre_wed_main_slide_show/">
+           <button type="button" class="btn btn-success" name="button">View pics</button>
+           </a>
+           <a href="/pre_wedding/pre_wed_main_slider_detail_view/{{i.id}}">
+           <button type="button" class="btn btn-success" id={{i.id}} name="button">View Details</button>
+           </a>
+         </div>
+
+       {% if forloop.counter|divisibleby:1 and forloop.counter > 0 and not forloop.last %}
+       </div>
+         {% endif %}
+       {% endfor %}
+
+
+     </div>
+     <a class="carousel-control-prev" href="#demo{{forloop.counter}}" role="button" data-slide="prev">
+       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+       <span class="sr-only">Previous</span>
+     </a>
+     <a class="carousel-control-next" href="#demo{{forloop.counter}}" role="button" data-slide="next">
+       <span class="carousel-control-next-icon" aria-hidden="true"></span>
+       <span class="sr-only">Next</span>
+     </a>
+   </div>
+
+</center>
+
+<br>
+
+
+  <!-- wedding shoot -->
+  <br>
+  <br>
+
+  <div  id="pre_wed_sh"class="col-md-12 col-sm-12 bg-light "style="padding:10px;">
+
+
+
+  <h1  class="bg-primary  col-sm-12 col-md-12" style='text-align:center'>Pre-Wedding Shoot</h1>
+
+
+
+
+
+
+
+
+
+  <div class="form-row col-md-12  col-sm-12 ">
+  {% for i in pre_wed_shoot|slice:"0:4" %}
+
+  <div>
+
+    <img src="/media/{{i.photo}}" alt="..." style=" margin:20px; border-radius:50%;height:300px; width:285px; padding:20px; ">
+    <div>
+      <center>
+        <div class="bg-light">
+
+        </div>
+      <h5 class="card-title text-dark">{{i.name}}</h5>
+      <p class="card-text text-dark">{{i.desc|slice:"1:30"}}</p>
+
+
+      <a href="/pre_wedding/pre_Wedding_photo_shoot_view/{{i.id}}"><button id="{{i.id}}" class="btn btn-success">View Detail</button></a>
+      </center>
+    </div>
+
+
+  </div>
+
+
+
+{% endfor %}
+
+  </div>
+  <hr>
+  <center>
+    <a href="/pre_wedding/pre_wed_shoot_view/">
+    <button type="button" class="btn btn-success" name="button">View More</button>
+    </a>    </center>
+</div>
+
+
+
+
+
+  <br>
+  <br>
+  <!-- form for wedding -->
+
+
+
+
+<form class="bg-light col-md-12 col-sm-11"  method="POST" action="/pre_wedding/pre_wed/">
+{% csrf_token %}
+
+    <!-- style=" margin-top:10px;width:99%"  -->
+  	<h1 class="bg-primary col-md-12 col-lg-12 col-sm-12" style='text-align:center'>Bookings For pre-Wdding</h1>
+  <!-- tyle="width:80%;margin-left:19%"> -->
+
+    <hr>
+
+  <div class="form-row col-md-6 col-lg-6 col-sm-6">
+    <div class="form-group col-md-6 col-xs-6 col-sm-6">
+      <label for="inputName">Name</label>
+      <input type="text" class="form-control" id="inputName" name="name" value="" required>
+    </div>
+    <div class="form-group col-md-6 col-xs-6 col-sm-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" name="email" value="" required>
+    </div>
+
+  </div>
+  <div class="form-group col-md-6 col-lg-6 col-sm-6">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" value="" required name="address">
+  </div>
+  <div class="form-group col-md-6 col-sm-11  col-lg-6">
+    <label for="inputAddress2">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2"  value="" required placeholder="Apartment, studio, or floor" name="address1">
+  </div>
+  <div class="form-row col-md-6 col-lg-6 col-sm-6">
+    <div class="form-group col-md-6 col-lg-6 col-sm-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity" value="" required  name='city'>
+    </div>
+    <div class="form-group col-md-4 col-lg-4 col-sm-6">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control" value="" required name = 'state'>
+        <option selected>Your state</option>
+        <option>Andhra Pradesh</option>
+        <option>Arunachal Pradesh</option>
+        <option>Arunachal Pradesh</option>
+        <option>Bihar</option>
+        <option>Chhattisgarh</option>
+        <option>Goa</option>
+        <option>Gujarat</option>
+        <option>Haryana</option>
+        <option>Himachal Pradesh</option>
+        <option>Jharkhand	</option>
+        <option>Karnataka</option>
+        <option>Kerala</option>
+        <option>Madhya Pradesh</option>
+        <option>Maharashtra</option>
+        <option>Manipur</option>
+        <option>Meghalaya</option>
+        <option>Mizoram</option>
+        <option>Nagaland</option>
+        <option>Odisha</option>
+        <option>Punjab</option>
+        <option>Rajasthan</option>
+        <option>Sikkim</option>
+        <option>Tamil Nadu</option>
+        <option>Telangana</option>
+        <option>Tripura</option>
+        <option>Uttar Pradesh</option>
+        <option>Uttarakhand</option>
+        <option>West Bengal</option>
+
+      </select>
+    </div>
+    <div class="form-group col-md-4 col-lg-4 col-sm-6" value="" required>
+      <label for="inputZip">Zip</label>
+      <input type="number" class="form-control" id="inputZip" name='zipcode' value="" required>
+    </div>
+    <div class="form-group col-md-5 col-lg-5 col-sm-6">
+      <label for="inputPhone">Phone</label>
+      <input type="number" class="form-control" id="inputPhone" name='telephone' value="" required>
+    </div>
+    <div class="form-group col-md-5 col-lg-5 col-sm-6">
+      Date:<label for="datepicker">From</label>
+      <input type="text" class="form-control" id="datepicker" name='date1' value=""  required>
+    </div>
+    <div class="form-group col-md-5 col-lg-5 col-sm-6">
+      Date:<label for="datepicker2">To</label>
+      <input type="text" class="form-control" id="datepicker2" name='date2' value=""  required>
+    </div>
+
+
+
+
+<h1 class='bg-primary col-md-12 col-sm-12' style='text-align:center'>On Demand</h1>
+
+      <div class="form-group col-md-4 col-lg-4 col-sm-6">
+        <label for="inputMakeup">MakeUp Artist</label>
+        <select id="inputMakeup" class="form-control" name='make1' >
+          <option>Responsible For MakeUp Artist</option>
+          <option>From Photography Team</option>
+          <option>From Coustomers</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4 col-lg-4 col-sm-6">
+        <label for="inputMakeup">MakeUp Artist</label>
+        <select id="inputMakeup" class="form-control" name='make2'>
+          <option> MakeUp Artist</option>
+          <option> Men</option>
+          <option>Women</option>
+        </select>
+      </div>
+
+
+
+
+
+  </div>
+
+  <center>
+  <button type="submit" class="btn btn-success " style="margin-bottom:20px;">Submit</button>
+  </center>
+</form>
+
+
+
+
+
+ <hr>
+<br>
+<!-- our coustomers -->
+<!-- style="width:80%; margin-left:19%; " -->
+<h1 class="bg-primary" style='text-align:center'>Our Coustomers</h1>
+<div class="container">
+<div id="demo1{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo1{{forloop.counter}}" data-slide-to="0" class="active"></li>
+      {% for c in range_for_pre_wed_coustomer %}
+      <li data-target="#demo1{{forloop.counter}}" data-slide-to="{{c}}" ></li>
+      {% endfor %}
+
+    </ul>
+
+    <!--Slideshow starts here -->
+    <div class="container carousel-inner no-padding">
+
+      <div class="carousel-item active">
+        <div class="col-xs-3 col-sm-3 col-md-3" >
+          <div>
+            <img src='/media/{{pre_wed_coust_slide.0.image}}' class="card-img-top" alt="..." style="border-radius:50%; height:300px;">
+            <center>
+            <div class="card-body middle">
+                <h5 class="card-title">{{pre_wed_coust_slide.0.name}}</h5>
+                <p class="card-text">{{pre_wed_coust_slide.0.email}}</p>
+                <p class="card-text">{{pre_wed_coust_slide.0.phone}}</p>
+                <a href="#" class="btn btn-success">For More</a>
+            </div>
+            </center>
+          </div>
+        </div>
+
+
+        {% for cou in pre_wed_coust_slide|slice:"1:" %}
+        <div class="col-xs-3 col-sm-3 col-md-3" id='aman'>
+          <div >
+            <img src='/media/{{cou.image}}' class="card-img-top" alt="..." style="border-radius:50%; height:300px;">
+            <center>
+            <div class="card-body">
+                <h5 class="card-title">{{cou.name}}</h5>
+                <p class="card-text">{{cou.email}}</p>
+                <p class="card-text">{{cou.phone}}</p>
+                <a href="#" class="btn btn-success">For More</a>
+            </div>
+            </center>
+          </div>
+       </div>
+       {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+</div ><div class='carousel-item' id='aman'>
+
+
+       {% endif %}
+       {% endfor %}
+</div>
+</div>
+
+    <!-- left and right controls for the slide -->
+    <a class="carousel-control-prev" href="#demo1{{forloop.counter}}" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo1{{forloop.counter}}" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- testimonials -->
+<br>
+<br>
+<center>
+  <div style="width:99%; padding:10px;" id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      {% for test in range_pre_wed_testimonial %}
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      {% endfor %}
+
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+
+        <img src="/media/{{pre_wed_testimonial.0.image}}" class="d-block w-100" alt="..." style="height:350px; width:80%; opasity:0.9%">
+        <div class="carousel-caption ">
+          <img src="/media/{{pre_wed_testimonial.0.pic}}" alt="" style="height:100px;width:100px; border-radius:50%; padding:10px;">
+
+          <h5>{{pre_wed_testimonial.0.heading}}</h5>
+          <p>{{pre_wed_testimonial.0.caption|slice:"100"}}</p>
+          <h5>{{pre_wed_testimonial.0.name}}</h5>
+          <h6>{{pre_wed_testimonial.0.post}}</h6>
+        </div>
+      </div>
+      {% for i in pre_wed_testimonial|slice:"1:" %}
+      <div class="carousel-item">
+
+        <img src="/media/{{i.image}}" class="d-block w-100" alt="..."  style="height:350px; width:80% ;opasity:0.9%">
+        <div class="carousel-caption ">
+          <img src="/media/{{i.pic}}" alt="" style="height:100px;width:100px; border-radius:50%; padding:10px;">
+
+          <h5>{{i.heading}}</h5>
+          <p>{{i.caption|slice:"100"}}</p>
+          <h5>{{i.name}}</h5>
+          <h6>{{i.post}}</h6>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</center>
+<br>
+<br>
+
+
+
+<!-- Reviews -->
+
+<div class="form-row col-md-12">
+<form class="bg-light col-md-6 col-lg-6 col-sm-6 col-xs-6" action="/pre_wedding/pre_reviews/" method="POST" >
+
+  {% csrf_token %}
+
+  <h1 style=" text-align:center;" class="col-md-12 bg-primary">Reviews For Wedding</h1>
+
+
+    <div class="form-group col-md-6 col-xs-6 col-sm-12">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="E-mail" required>
+    </div>
+
+
+
+  <div class="form-group col-md-6 col-lg-6 col-sm-12">
+    <label for="inputName">Name</label>
+    <input type="text" class="form-control" id="inputName" placeholder="Full Name" name="name" required>
+  </div>
+  <div class="form-group col-md-6 col-lg-6 col-sm-12">
+    <label for="inputComment">Comment</label>
+    <input type="textarea" class="form-control" id="inputComment" placeholder="Comment" name="message" required>
+  </div>
+
+  <center><button class="btn btn-success" style="margin:10px;" type="submit" name="review">Submit</button>
+    </center></form>
+    <div class="  col-md-6 col-sm-6">
+      <h1 class='bg-primary'  style="text-align:center;">work demo</h1>
+
+      {% for i in demo|slice:"1:" %}
+        <p>{{i.descv}}</p>
+<iframe  class="  col-md-12 col-sm-6 "  width="590" height="315" src="{{i.linkv}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% endfor %}
+      </div>
+
+</div>
+<br>
+<br>
+
+<!-- bookings -->
+<!-- <center> -->
+<!-- <div class=" bg-light col-md-11 col-lg-11 col-sm-11 col-xs-11" style="padding:10px;"> -->
+
+
+  <h1 class='bg-primary'  style="text-align:center;">Our Bookings</h1>
+  <div class="scrollmenu">
+  <table class="table table-light">
+  <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+
+        <th scope="col">city</th>
+        <th scope="col">state</th>
+        <th scope="col">zipcode</th>
+        <th scope='col'>MakeUp Artist</th>
+        <th scope='col'>DATES</th>
+
+      </tr>
+    </thead>
+    {% for tab in pre_wed|slice:":4" %}
+    <tbody>
+      <tr>
+        <th scope="row">{{tab.id}}</th>
+        <td>{{tab.name}}</td>
+        <td>{{tab.email}}</td>
+        <td>{{tab.telephone}}</td>
+        <td>{{tab.address1|slice:":20"}}</td>
+        <td>{{tab.city}}</td>
+        <td>{{tab.state}}</td>
+        <td>{{tab.zipcode}}</td>
+        <td>{{tab.make}}--<b>And</b>--<b>Gender</b>-->{{tab.makeup}}</td>
+
+        <td><b>From</b>--{{tab.date11}}--<b>To</b>--{{tab.date21}}</td>
+
+      </tr>
+
+
+    </tbody>
+    {% endfor %}
+  </table>
+
+
+</div>
+<center>
+  <a href="/pre_wedding/pre_wed_book_view/">
+    <button type="button" name="button" class="btn btn-success">For More  details</button>
+  </a>
+
+  </center>
+
+<br>
+<br>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<!-- footer -->
+
+
+
+
+
+
+
+
+{% endblock %}
+{% block js %}
+
+
+<script>
+
+
+ $("#datepicker").datepicker({
+   numberOfMonths:1,
+    changeYear:true,
+    changeMonth:true,
+    showWeek:true,
+    showOtherMonths:true,
+    minDate :new Date(2012 ,0,2),
+    maxDate :new Date(2020 , 11,3),
+       });
+       $("#datepicker2").datepicker({
+         numberOfMonths:1,
+          changeYear:true,
+          changeMonth:true,
+          showWeek:true,
+          showOtherMonths:true,
+          minDate :new Date(2012 ,0,2),
+          maxDate :new Date(2020 , 11,3),
+             });
+
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block content %}
+<br>
+<br>
+<h1 class="col-md-11 bg-primary">About Photo</h1>
+<div class="container my-4">
+    <div class="row">
+    <div class="col-md-4">
+    <div class="row">
+        <a href="/pre_wedding/about_us_fun/">
+        <img src="/media/{{aboutus_detail_views.image}}" width="233px" height="385px" style="border-radius:50px">
+        </a>
+    </div>
+
+        <!--<div class="row">-->
+
+            <!--<button class="btn btn-primary mx-3">Buy Now</button>-->
+            <!--<button class="btn btn-primary">Add To Cart</button>-->
+
+
+        <!--</div>-->
+
+
+    </div>
+
+    <div class="col-md-8">
+        <h5 class="text-light"><b>NAME</B> --{{aboutus_detail_views.name}}</h5>
+        <p class="text-light"><b>Email</B> --{{aboutus_detail_views.emailem}}</p>
+        <p class="text-light"><b>PHONE</B>  --{{aboutus_detail_views.phone}}</p>
+  <p class="text-light"><b>ROLE</B> --{{aboutus_detail_views.role}}</p>
+    <p class="text-light"><b>Work-Experience</B> --{{aboutus_detail_views.work_experiance}}</p>
+
+    </div>
+    </div>
+
+
+</div>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+
+
+{% endblock %}
